@@ -1,16 +1,39 @@
-# search_app
+# Search product mobile application
 
-A new Flutter application.
+### Install packages
 
-## Getting Started
+cd search_app
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+flutter packages get
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## To run the application in Android
+### Start the android emulator
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+flutter emulators --launch emulator_id
+
+
+Ex: flutter emulators --launch Nexus_6
+
+### Run the application in android emulator
+
+flutter run -d emulator_id
+
+
+Ex: flutter run -d Nexus_6
+
+## To run the application in ios
+### Start the ios simulator
+
+open -a Simulator
+
+### Run the application in ios simulator
+
+flutter run -d simulator_id
+
+
+Ex: flutter run -d 7E8D4637-3EB3-4AF5-B322-A12F47D7AE02
+
+
+### Screenshots of the application on various devices
+

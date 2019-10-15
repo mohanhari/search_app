@@ -10,7 +10,7 @@ class _DetailsPageState extends State<DetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Product Details'),
+        title: Center(child: Text('Product Details')),
       ),
       body: Center(child: Text('Welcome to Product details page')),
     );

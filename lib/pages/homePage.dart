@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:search_app/widgets/productListItem.dart';
 import '../utils/productDetails.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,14 +12,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<ProductDetails> _productDetails = [
-    ProductDetails(title: 'Image 1', tag: 'tag 1', imageUrl: 'https://n1.sdlcdn.com/imgs/c/9/8/Lambency-Brown-Solid-Casual-Blazers-SDL781227769-1-1b660.jpg'),
-    ProductDetails(title: 'Image 3', tag: 'tag 2', imageUrl: "https://n1.sdlcdn.com/imgs/c/9/8/Lambency-Brown-Solid-Casual-Blazers-SDL781227769-1-1b660.jpg"),
-    ProductDetails(title: 'Image 3', tag: 'tag 3', imageUrl: "https://n1.sdlcdn.com/imgs/c/9/8/Lambency-Brown-Solid-Casual-Blazers-SDL781227769-1-1b660.jpg"),
-    ProductDetails(title: 'Image 4', tag: 'tag 4', imageUrl: "https://n1.sdlcdn.com/imgs/c/9/8/Lambency-Brown-Solid-Casual-Blazers-SDL781227769-1-1b660.jpg"),
-    ProductDetails(title: 'Image 5', tag: 'tag 5', imageUrl: "https://n1.sdlcdn.com/imgs/c/9/8/Lambency-Brown-Solid-Casual-Blazers-SDL781227769-1-1b660.jpg"),
-    ProductDetails(title: 'Image 6', tag: 'tag 6', imageUrl: "https://n1.sdlcdn.com/imgs/c/9/8/Lambency-Brown-Solid-Casual-Blazers-SDL781227769-1-1b660.jpg"),
-    ProductDetails(title: 'Image 7', tag: 'tag 7', imageUrl: "https://n1.sdlcdn.com/imgs/c/9/8/Lambency-Brown-Solid-Casual-Blazers-SDL781227769-1-1b660.jpg"),
-    ProductDetails(title: 'Image 8', tag: 'tag 8', imageUrl: "https://n1.sdlcdn.com/imgs/c/9/8/Lambency-Brown-Solid-Casual-Blazers-SDL781227769-1-1b660.jpg"),
+    ProductDetails(
+        title: 'Apple Watch', tag: 'Watches', imageUrl: 'apple_watch.jpg'),
+    ProductDetails(title: 'Iphone 11', tag: 'Phones', imageUrl: "iphone.jpg"),
+    ProductDetails(title: 'Hp Laptop', tag: 'Laptops', imageUrl: "laptop1.jpg"),
+    ProductDetails(
+        title: 'Macbook pro', tag: 'Laptops', imageUrl: "macbook2.jpeg"),
+    ProductDetails(
+        title: 'AlienWare', tag: 'Laptops', imageUrl: "alienware.png"),
+    ProductDetails(
+        title: 'Samsung s10', tag: 'phones', imageUrl: "samsung_s10.jpg"),
+    ProductDetails(
+        title: 'One plus 7t', tag: 'phones', imageUrl: "one_plus.jpg"),
   ];
   List<ProductDetails> _searchResult = [];
   TextEditingController controller = new TextEditingController();
@@ -27,103 +33,30 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
   }
 
   Widget _buildUsersList() {
     return new ListView.builder(
+      scrollDirection: Axis.horizontal,
       itemCount: _productDetails.length,
       itemBuilder: (context, index) {
-        return new Card(
-          child: new InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, "/details_page");
-            },
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                child: Image.network(
-                  _productDetails[index].imageUrl,
-                ),
-                height: 250.0,
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width / 2.2,
-                ),
-                SizedBox(width: 10.0),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 20.0, 0, 10.0),
-                      child: Text(
-                        _productDetails[index].title,
-                        style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Text(
-                      _productDetails[index].tag
-                    )
-                  ],
-                )
-              ]
-            ),
-          ),
-          margin: const EdgeInsets.all(10.0),
-        );
+        return ProductListItem(
+            title: _productDetails[index].title,
+            tag: _productDetails[index].tag,
+            imageUrl: _productDetails[index].imageUrl);
       },
     );
   }
 
   Widget _buildSearchResults() {
     return new ListView.builder(
+      scrollDirection: Axis.horizontal,
       itemCount: _searchResult.length,
       itemBuilder: (context, idx) {
-        return new Card(
-          child: new InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, "/details_page");
-            },
-            child: Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    child: Image.network(
-                      _productDetails[idx].imageUrl,
-                    ),
-                    height: 250.0,
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width / 2.2,
-                  ),
-                  SizedBox(width: 10.0),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 20.0, 0, 10.0),
-                        child: Text(
-                          _productDetails[idx].title,
-                          style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Text(
-                          _productDetails[idx].tag
-                      )
-                    ],
-                  )
-                ]
-            ),
-          ),
-          margin: const EdgeInsets.all(10.0),
-        );
+        return ProductListItem(
+            title: _searchResult[idx].title,
+            tag: _searchResult[idx].tag,
+            imageUrl: _searchResult[idx].imageUrl);
       },
     );
   }
@@ -157,10 +90,13 @@ class _HomePageState extends State<HomePage> {
       children: <Widget>[
         new Container(
             color: Theme.of(context).primaryColor, child: _buildSearchBox()),
-        new Expanded(
-            child: _searchResult.length != 0 || controller.text.isNotEmpty
-                ? _buildSearchResults()
-                : _buildUsersList()),
+        new Flexible(
+            child: Container(
+          height: 200.0,
+          child: _searchResult.length != 0 || controller.text.isNotEmpty
+              ? _buildSearchResults()
+              : _buildUsersList(),
+        )),
       ],
     );
   }
@@ -169,7 +105,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Home'),
+        title: Center(child: new Text('Product List')),
         elevation: 0.0,
       ),
       body: _buildBody(),
@@ -186,7 +122,8 @@ class _HomePageState extends State<HomePage> {
 
     _productDetails.forEach((productDetail) {
       if (productDetail.title.toLowerCase().contains(text.toLowerCase()) ||
-          productDetail.tag.toLowerCase().contains(text.toLowerCase())) _searchResult.add(productDetail);
+          productDetail.tag.toLowerCase().contains(text.toLowerCase()))
+        _searchResult.add(productDetail);
     });
 
     setState(() {});
