@@ -35,5 +35,22 @@ flutter run -d simulator_id
 Ex: flutter run -d 7E8D4637-3EB3-4AF5-B322-A12F47D7AE02
 
 
-### Screenshots of the application on various devices
+## Screenshots of the application on various devices
 
+![Alt text](/assets/android_home.png?raw=true "Optional Title")
+
+![Alt text](/assets/android_search.png?raw=true "Optional Title")
+
+![Alt text](/assets/android_details.png?raw=true "Optional Title")
+
+![Alt text](/assets/iphone_home.png?raw=true "Optional Title")
+
+![Alt text](/assets/iphone_search.png?raw=true "Optional Title")
+
+![Alt text](/assets/iphone_details.png?raw=true "Optional Title")
+
+![Alt text](/assets/ipad_home.png?raw=true "Optional Title")
+
+![Alt text](/assets/ipad_search.png?raw=true "Optional Title")
+
+![Alt text](/assets/ipad_details.png?raw=true "Optional Title")
